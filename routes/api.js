@@ -1,44 +1,44 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const axios = require("axios")
-const cheerio = require("cheerio")
-
-// get webpage 
-async function getWebpage(url) {
-  const response = await axios.get(url);
-  const webpage = cheerio.load(response.data)
-  return webpage;
-}
+const cheerio = require("cheerio");
+const getWebpage = require("./../utils/utils");
 
 /* API */
-router.get('/get-books', async function (req, res, next) {
-  let books = []
-  const url = 'https://books.goalkicker.com/';
+router.get("/get-books", async function (req, res, next) {
+	const books = [];
+	const url = new URL("https://books.goalkicker.com/");
 
-  const $ = await getWebpage(url)
-  const bookElements = $('.books > .bookContainer')
+	const $ = await getWebpage(url);
+	const bookElements = $(".books > .bookContainer");
 
-  for (let i = 0; i < bookElements.length; i++) {
-    const ch = cheerio.load(bookElements[i])
+	for (let i = 0; i < bookElements.length; i++) {
+		const bookElement = cheerio.load(bookElements[i]);
 
-    const title = ch.text()
-    const pageLink = `${url}${ch.root().find('a').attr('href')}`
+		// book title
+		const title = bookElement.text();
+		// book page link
+		const pageLink = new URL(bookElement.root().find("a").attr("href"), url);
 
-    const bookPage = await getWebpage(pageLink)
-    const partialLink = bookPage.root().find('#frontpage>a').attr('href')
-    const link = `${pageLink}${partialLink}`
+		// book cover
+		const cover = new URL(bookElement.root().find("a").find("img").attr("src"), url);
 
-    books.push({
-      title: title,
-      pageLink: pageLink,
-      link: link,
-    });
-  }
+		// load book page
+		const bookPage = await getWebpage(pageLink);
+		const partialLink = bookPage.root().find("#frontpage>a").attr("href");
+		// book download link
+		const pdfLink = new URL(partialLink, pageLink);
 
-  res.json({
-    books: books
-  })
+		books.push({
+			title: title,
+			pageLink: pageLink,
+			cover: cover,
+			pdfLink: pdfLink,
+		});
+	}
 
+	res.json({
+		books: books,
+	});
 });
 
 module.exports = router;
