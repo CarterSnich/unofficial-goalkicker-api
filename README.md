@@ -4,7 +4,7 @@ An unofficial API for fetching and dowloading books from GoalKicker.com using we
 
 ## How to use
 
-`/api/get-books` - `[GET]` returns all available books shown on the [index](https://books.goalkicker.com/) of the website
+[`/api/get-books`](https://unofficial-goalkicker-api.onrender.com/api/get-books) - `[GET]` returns all available books shown on the [index](https://books.goalkicker.com/) of the website
 
 ## GoalKicker.com
 
