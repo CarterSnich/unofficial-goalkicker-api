@@ -3,8 +3,7 @@ const router = express.Router();
 const cheerio = require("cheerio");
 const getWebpage = require("./../utils/utils");
 
-/* API */
-router.get("/get-books", async function (req, res, next) {
+const books = router.get("/get-books", async function (req, res, next) {
 	const books = [];
 	const url = new URL("https://books.goalkicker.com/");
 
@@ -41,4 +40,4 @@ router.get("/get-books", async function (req, res, next) {
 	});
 });
 
-module.exports = router;
+module.exports = books;
