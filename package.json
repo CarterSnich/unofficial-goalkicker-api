@@ -4,6 +4,7 @@
   "private": true,
   "description": "",
   "author": "",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon ./app.ts"
   },
