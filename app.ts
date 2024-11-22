@@ -24,3 +24,5 @@ app.use("/book-page", bookPage);
 app.listen(port, () => {
   console.log(`Server ready on port ${port}`);
 });
+
+export default app;
