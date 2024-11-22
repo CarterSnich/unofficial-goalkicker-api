@@ -4,5 +4,13 @@
     "paths": {
       "~/*": ["./*"]
     }
-  }
+  },
+  "outDir": "./dist", // Output directory for compiled files
+  "rootDir": "./", // Root directory for source files
+  "strict": true, // Enable strict type-checking
+  "esModuleInterop": true, // Enable compatibility with non-ES module imports
+  "skipLibCheck": true, // Skip library type checks for faster builds
+  "forceConsistentCasingInFileNames": true, // Ensure consistent file name casing
+  "include": ["**/*.ts"], // Include all TypeScript files in the src folder
+  "exclude": ["node_modules"]
 }

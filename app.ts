@@ -9,7 +9,7 @@ import bookPage from "~/routes/book-page";
 const app = express();
 const port = 3000;
 
-app.use(logger("dev"));
+app.use(logger(process.env.NODE_ENV || "dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -22,5 +22,5 @@ app.use("/book-entries", bookEntry);
 app.use("/book-page", bookPage);
 
 app.listen(port, () => {
-  console.log(`Serving http://localhost:${port}`);
+  console.log(`Server ready on port ${port}`);
 });
