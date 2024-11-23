@@ -24,7 +24,7 @@ router.get("/", async function (req, res, _) {
 
     // Extract data
     const title = $("#header > h1:nth-child(1)").text().trim();
-    const coverUrl = $(".pagePreview2").attr("src");
+    const coverUrl = new URL(url, $(".pagePreview2").attr("src"));
 
     const chapters = $(
       "#page > div:nth-child(6) > ol:nth-child(2) > li.chapter-type"
@@ -45,7 +45,7 @@ router.get("/", async function (req, res, _) {
     // Send extracted data as JSON
     res.json({
       title: title,
-      cover_url: coverUrl,
+      cover_url: coverUrl.toString(),
       contents: { chapters, appendices },
       page_previews: pagePreviews,
     });
