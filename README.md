@@ -1,10 +1,39 @@
 # unofficial-goalkicker-api
 
-An unofficial API for fetching and dowloading books from GoalKicker.com using web scraping with [Cheerio](https://cheerio.js.org/).
+An unofficial API for fetching and dowloading books from [GoalKicker](https://books.goalkicker.com/) using web scraping with [Cheerio](https://cheerio.js.org/).
 
-## How to use
+## How to Use
 
-[`/api/get-books`](https://unofficial-goalkicker-api.onrender.com/api/get-books) - `[GET]` returns all available books shown on the [index](https://books.goalkicker.com/) of the website
+### [`/book-entries`](https://unofficial-goalkicker-api-pyal.vercel.app/book-entries)
+
+Returns a JSON array of all books listed on the homepage. Each object in the array includes the following keys:
+
+#### Response
+
+- **`title`**: The title of the book.
+- **`cover_url`**: The URL of the book's cover image.
+- **`page_url`**: The URL to the book's detailed page.
+
+---
+
+### [`/book-page`](https://unofficial-goalkicker-api-pyal.vercel.app/book-page)
+
+Returns all extracted data from the webpage associated with the given book URL.
+
+#### Parameters
+
+- **`url`** _(GET)_: The URL of the book's webpage.
+
+#### Response
+
+Returns an object with the following structure:
+
+- **`title`**: The title of the book.
+- **`cover_url`**: The URL of the book's cover image.
+- **`contents`**: An object containing:
+  - **`chapters`**: List of chapters.
+  - **`appendices`**: List of appendices.
+- **`page_previews`**: Additional previews of the book's pages.
 
 ## GoalKicker.com
 
