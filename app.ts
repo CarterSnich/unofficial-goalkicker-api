@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (_, res) => {
-  res.send("Hello World!");
+  res.redirect("https://cartersnich.github.io/unofficial-goalkicker-api/");
 });
 app.use("/book-entries", bookEntry);
 app.use("/book-page", bookPage);
