@@ -3,8 +3,8 @@ import express from "express";
 import logger from "morgan";
 import * as path from "path";
 
-import bookEntry from "~/routes/book-entries";
-import bookPage from "~/routes/book-page";
+import bookEntry from "./routes/book-entries";
+import bookPage from "./routes/book-page";
 
 const app = express();
 const port = 3000;

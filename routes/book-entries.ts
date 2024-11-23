@@ -1,6 +1,6 @@
 import { load } from "cheerio";
 import { Router } from "express";
-import { getWebpage } from "~/utils";
+import { getWebpage } from "../utils";
 
 const router = Router();
 
