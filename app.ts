@@ -1,6 +1,6 @@
-import * as cookieParser from "cookie-parser";
-import * as express from "express";
-import * as logger from "morgan";
+import cookieParser from "cookie-parser";
+import express from "express";
+import logger from "morgan";
 import * as path from "path";
 
 import bookEntry from "~/routes/book-entries";
