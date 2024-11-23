@@ -24,20 +24,17 @@ router.get("/", async function (req, res, _) {
 
     // Extract data
     const title = $("#header > h1:nth-child(1)").text().trim();
-    const coverUrl = new URL(url, $(".pagePreview2").attr("src"));
-
+    const coverUrl = new URL($(".pagePreview2").attr("src"), url);
     const chapters = $(
       "#page > div:nth-child(6) > ol:nth-child(2) > li.chapter-type"
     )
       .map((_, el) => $(el).text().trim())
       .toArray();
-
     const appendices = $(
       "#page > div:nth-child(6) > ol:nth-child(2) > li.appendix-type"
     )
       .map((_, el) => $(el).text().trim())
       .toArray();
-
     const pagePreviews = $("#page > div:nth-child(7) > img.pagePreview")
       .map((_, el) => $(el).attr("src"))
       .toArray();
