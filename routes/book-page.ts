@@ -36,7 +36,7 @@ router.get("/", async function (req, res, _) {
       .map((_, el) => $(el).text().trim())
       .toArray();
     const pagePreviews = $("#page > div:nth-child(7) > img.pagePreview")
-      .map((_, el) => $(el).attr("src"))
+      .map((_, el) => new URL(url, $(el).attr("src")).toString())
       .toArray();
 
     // Send extracted data as JSON
