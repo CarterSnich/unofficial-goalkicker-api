@@ -25,6 +25,10 @@ router.get("/", async function (req, res, _) {
     // Extract data
     const title = $("#header > h1:nth-child(1)").text().trim();
     const coverUrl = new URL($(".pagePreview2").attr("src"), url);
+    const downloadUrl = new URL(
+      $("#page > div:nth-child(5) > a:nth-child(1)").attr("href"),
+      url
+    );
     const chapters = $(
       "#page > div:nth-child(6) > ol:nth-child(2) > li.chapter-type"
     )
@@ -45,6 +49,7 @@ router.get("/", async function (req, res, _) {
       cover_url: coverUrl.toString(),
       contents: { chapters, appendices },
       page_previews: pagePreviews,
+      download_url: downloadUrl,
     });
   } catch (err) {
     // Handle errors during scraping
