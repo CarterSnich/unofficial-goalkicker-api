@@ -25,8 +25,10 @@ router.get("/", async function (req, res, _) {
     // Extract data
     const title = $("#header > h1:nth-child(1)").text().trim();
     const coverUrl = new URL($(".pagePreview2").attr("src"), url);
-    const fileName = $("#page > div:nth-child(5) > a:nth-child(1)").attr("href"); 
-    const downloadUrl = new URL(pdfFileName, url);
+    const fileName = $("#page > div:nth-child(5) > a:nth-child(1)").attr(
+      "href"
+    );
+    const downloadUrl = new URL(fileName, url);
     const chapters = $(
       "#page > div:nth-child(6) > ol:nth-child(2) > li.chapter-type"
     )
@@ -48,7 +50,7 @@ router.get("/", async function (req, res, _) {
       contents: { chapters, appendices },
       page_previews: pagePreviews,
       download_url: downloadUrl,
-      file_name: fileName
+      file_name: fileName,
     });
   } catch (err) {
     // Handle errors during scraping
